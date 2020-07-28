@@ -14,8 +14,12 @@ describe 'linked_list' do
     list = LinkedList.new
     expect(list.head).to be_nil
     list.append("West")
-    expect(list.head.surname).to eq('west')
+    expect(list.head.surname).to eq('West')
+    expect(list.head.next_node).to be_nil
     expect(list.count).to eq(1)
-    expect(list.to_string).to eq("The West family")
+    list.append("East")
+    expect(list.head.surname).to eq('East')
+    expect(list.head.next_node.surname).to eq("West")
+    expect(list.count).to eq(2)
   end
 end
